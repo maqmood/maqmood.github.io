@@ -33,17 +33,7 @@
         <i class="fas fa-moon"></i>
     </button>
 
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="#home" class="nav-logo">MA</a>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#work" class="nav-link">Work</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-            </ul>
-        </div>
-    </nav>
+
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -52,34 +42,31 @@
             <div class="hero-content">
                 <h1 class="hero-title">Mahmood AlQadi</h1>
                 <p class="hero-subtitle">Economics • Data Science</p>
-                <p class="hero-description">
-                    Transforming complex economic data into actionable insights through advanced analytics and statistical modeling.
-                </p>
                 
                 <div class="hero-actions">
-                    <a href="assets/mahmood-alqadi.vcf" class="btn btn-primary" download>
+                    <a href="assets/mahmood-alqadi.vcf" class="btn" download>
                         <i class="fas fa-address-card"></i>
                         VCard
                     </a>
-                    <a href="assets/resume.pdf" class="btn btn-secondary" target="_blank">
+                    <a href="assets/resume.pdf" class="btn" target="_blank">
                         <i class="fas fa-file-pdf"></i>
                         Resume
                     </a>
-                    <a href="mailto:mahmood.alqadi@email.com" class="btn btn-outline">
+                    <a href="mailto:mahmood.alqadi@email.com" class="btn">
                         <i class="fas fa-envelope"></i>
                         Email
                     </a>
-                </div>
-                
-                <div class="hero-social">
-                    <a href="https://linkedin.com/in/mahmoodqadi" target="_blank" class="social-link">
+                    <a href="https://linkedin.com/in/mahmoodqadi" target="_blank" class="btn">
                         <i class="fab fa-linkedin"></i>
+                        LinkedIn
                     </a>
-                    <a href="https://github.com/mahmoodqadi" target="_blank" class="social-link">
+                    <a href="https://github.com/mahmoodqadi" target="_blank" class="btn">
                         <i class="fab fa-github"></i>
+                        GitHub
                     </a>
-                    <a href="https://blog.mahmoodqadi.com" target="_blank" class="social-link">
+                    <a href="https://blog.mahmoodqadi.com" target="_blank" class="btn">
                         <i class="fas fa-blog"></i>
+                        Blog
                     </a>
                 </div>
             </div>
@@ -170,6 +157,46 @@
                         </a>
                     </div>
                 </div>
+
+                <div class="work-card">
+                    <div class="work-image">
+                        <img src="https://pixabay.com/get/g7e4cf8bce68e4f87c4b15da77b8c12c23f16afd0e3d20d8d1c7fcf8b5e7c8c8ce8a5e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7_1280.jpg" alt="Supply Chain Optimization">
+                    </div>
+                    <div class="work-content">
+                        <h3>Supply Chain Optimization</h3>
+                        <p>Advanced optimization algorithms for supply chain efficiency using operations research methods. Features real-time tracking and predictive maintenance scheduling.</p>
+                        <div class="work-tech">
+                            <span>Python</span>
+                            <span>Optimization</span>
+                            <span>OR-Tools</span>
+                            <span>Flask</span>
+                        </div>
+                        <a href="https://github.com/mahmoodqadi/supply-chain" target="_blank" class="work-link">
+                            <i class="fab fa-github"></i>
+                            View Project
+                        </a>
+                    </div>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-image">
+                        <img src="https://pixabay.com/get/g8e4cf8bce68e4f87c4b15da77b8c12c23f16afd0e3d20d8d1c7fcf8b5e7c8c8ce8a5e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7_1280.jpg" alt="Consumer Sentiment Analysis">
+                    </div>
+                    <div class="work-content">
+                        <h3>Consumer Sentiment Analysis</h3>
+                        <p>Natural language processing system for analyzing consumer sentiment from social media and survey data. Implements transformer models for accurate sentiment classification.</p>
+                        <div class="work-tech">
+                            <span>NLP</span>
+                            <span>Transformers</span>
+                            <span>PyTorch</span>
+                            <span>Streamlit</span>
+                        </div>
+                        <a href="https://github.com/mahmoodqadi/sentiment-analysis" target="_blank" class="work-link">
+                            <i class="fab fa-github"></i>
+                            View Project
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -178,65 +205,53 @@
     <section id="experience" class="experience">
         <div class="container">
             <h2 class="section-title">Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3>Senior Data Scientist</h3>
-                        <h4>Economic Research Institute</h4>
-                        <span class="timeline-date">2022 - Present</span>
-                        <p>Leading advanced analytics projects focusing on macroeconomic modeling and policy impact assessment. Developing machine learning models for economic forecasting and conducting statistical analysis of financial markets.</p>
-                        <ul>
-                            <li>Developed predictive models improving forecast accuracy by 25%</li>
-                            <li>Led team of 5 analysts in cross-functional research projects</li>
-                            <li>Published 8 research papers in peer-reviewed economic journals</li>
-                        </ul>
-                    </div>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <h3>Senior Data Scientist</h3>
+                    <h4>Economic Research Institute</h4>
+                    <span class="experience-date">2022 - Present</span>
+                    <p>Leading advanced analytics projects focusing on macroeconomic modeling and policy impact assessment. Developing machine learning models for economic forecasting and conducting statistical analysis of financial markets.</p>
+                    <ul>
+                        <li>Developed predictive models improving forecast accuracy by 25%</li>
+                        <li>Led team of 5 analysts in cross-functional research projects</li>
+                        <li>Published 8 research papers in peer-reviewed economic journals</li>
+                    </ul>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3>Economic Analyst</h3>
-                        <h4>Financial Analytics Corp</h4>
-                        <span class="timeline-date">2020 - 2022</span>
-                        <p>Conducted comprehensive economic research and analysis for investment strategies. Specialized in market trend analysis, risk assessment, and econometric modeling for portfolio optimization.</p>
-                        <ul>
-                            <li>Analyzed market data for $2B+ investment portfolio</li>
-                            <li>Developed automated reporting systems reducing analysis time by 40%</li>
-                            <li>Collaborated with portfolio managers on strategic investment decisions</li>
-                        </ul>
-                    </div>
+                <div class="experience-card">
+                    <h3>Economic Analyst</h3>
+                    <h4>Financial Analytics Corp</h4>
+                    <span class="experience-date">2020 - 2022</span>
+                    <p>Conducted comprehensive economic research and analysis for investment strategies. Specialized in market trend analysis, risk assessment, and econometric modeling for portfolio optimization.</p>
+                    <ul>
+                        <li>Analyzed market data for $2B+ investment portfolio</li>
+                        <li>Developed automated reporting systems reducing analysis time by 40%</li>
+                        <li>Collaborated with portfolio managers on strategic investment decisions</li>
+                    </ul>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3>Research Associate</h3>
-                        <h4>University Economic Research Center</h4>
-                        <span class="timeline-date">2018 - 2020</span>
-                        <p>Conducted quantitative research on economic policy impacts and market dynamics. Specialized in data collection, statistical analysis, and econometric modeling for academic research projects.</p>
-                        <ul>
-                            <li>Managed large-scale economic datasets with 1M+ observations</li>
-                            <li>Contributed to 12 academic publications and research reports</li>
-                            <li>Presented findings at 6 international economic conferences</li>
-                        </ul>
-                    </div>
+                <div class="experience-card">
+                    <h3>Research Associate</h3>
+                    <h4>University Economic Research Center</h4>
+                    <span class="experience-date">2018 - 2020</span>
+                    <p>Conducted quantitative research on economic policy impacts and market dynamics. Specialized in data collection, statistical analysis, and econometric modeling for academic research projects.</p>
+                    <ul>
+                        <li>Managed large-scale economic datasets with 1M+ observations</li>
+                        <li>Contributed to 12 academic publications and research reports</li>
+                        <li>Presented findings at 6 international economic conferences</li>
+                    </ul>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3>Junior Data Analyst</h3>
-                        <h4>Market Insights Solutions</h4>
-                        <span class="timeline-date">2017 - 2018</span>
-                        <p>Entry-level position focusing on data cleaning, visualization, and basic statistical analysis. Gained experience in business intelligence and market research methodologies.</p>
-                        <ul>
-                            <li>Processed and analyzed consumer behavior datasets</li>
-                            <li>Created interactive dashboards for client presentations</li>
-                            <li>Supported senior analysts in research methodology development</li>
-                        </ul>
-                    </div>
+                <div class="experience-card">
+                    <h3>Junior Data Analyst</h3>
+                    <h4>Market Insights Solutions</h4>
+                    <span class="experience-date">2017 - 2018</span>
+                    <p>Entry-level position focusing on data cleaning, visualization, and basic statistical analysis. Gained experience in business intelligence and market research methodologies.</p>
+                    <ul>
+                        <li>Processed and analyzed consumer behavior datasets</li>
+                        <li>Created interactive dashboards for client presentations</li>
+                        <li>Supported senior analysts in research methodology development</li>
+                    </ul>
                 </div>
             </div>
         </div>
