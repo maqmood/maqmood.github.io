@@ -28,16 +28,16 @@
     --bg-primary: #0f172a;
     --bg-secondary: #1e293b;
     --bg-tertiary: #334155;
-    --text-primary: #f1f5f9;
-    --text-secondary: #cbd5e1;
+    --text-primary: #f8fafc;
+    --text-secondary: #e2e8f0;
     --text-muted: #94a3b8;
-    --accent-primary: #3b82f6;
-    --accent-secondary: #2563eb;
+    --accent-primary: #60a5fa;
+    --accent-secondary: #3b82f6;
     --accent-tertiary: #1e40af;
-    --border-color: #334155;
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+    --border-color: #475569;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4);
 }
 
 html {
@@ -250,6 +250,11 @@ body {
     font-weight: 500;
 }
 
+[data-theme="dark"] .work-tech span {
+    background: rgba(96, 165, 250, 0.15);
+    color: var(--accent-primary);
+}
+
 .work-link {
     display: inline-flex;
     align-items: center;
@@ -328,6 +333,11 @@ body {
 .status-badge.current {
     background: var(--accent-tertiary);
     color: var(--accent-secondary);
+}
+
+[data-theme="dark"] .status-badge.current {
+    background: rgba(96, 165, 250, 0.2);
+    color: var(--accent-primary);
 }
 
 .status-badge.current::before {
@@ -446,7 +456,7 @@ body {
     }
     
     .hero-actions {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 0.8rem;
     }
     
