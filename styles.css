@@ -391,6 +391,17 @@ body {
     font-size: 0.75rem;
 }
 
+.skills-section {
+    margin-top: 1rem;
+}
+
+.skills-section h5 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
 /* Footer */
 .footer {
     background: var(--bg-secondary);
