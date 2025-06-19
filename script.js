@@ -1,8 +1,23 @@
 // Theme Management
 class ThemeManager {
     constructor() {
-        this.theme = localStorage.getItem('theme') || 'light';
+        this.theme = this.getSystemTheme();
         this.init();
+    }
+
+    getSystemTheme() {
+        // Check if user has a saved preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            return savedTheme;
+        }
+        
+        // Otherwise, use system preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+        }
+        
+        return 'light';
     }
 
     init() {

@@ -192,7 +192,7 @@ body {
 
 .work-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
 }
 
@@ -287,80 +287,47 @@ body {
     background: var(--bg-primary);
 }
 
-.timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
 }
 
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    height: 100%;
-    width: 2px;
-    background: var(--accent-primary);
-    transform: translateX(-50%);
-}
-
-.timeline-item {
-    position: relative;
-    margin-bottom: 3rem;
+.experience-card {
+    background: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 0.6s ease-out forwards;
 }
 
-.timeline-item:nth-child(1) { animation-delay: 0.1s; }
-.timeline-item:nth-child(2) { animation-delay: 0.2s; }
-.timeline-item:nth-child(3) { animation-delay: 0.3s; }
-.timeline-item:nth-child(4) { animation-delay: 0.4s; }
+.experience-card:nth-child(1) { animation-delay: 0.1s; }
+.experience-card:nth-child(2) { animation-delay: 0.2s; }
+.experience-card:nth-child(3) { animation-delay: 0.3s; }
+.experience-card:nth-child(4) { animation-delay: 0.4s; }
 
-.timeline-marker {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    width: 20px;
-    height: 20px;
-    background: var(--accent-primary);
-    border: 4px solid var(--bg-primary);
-    border-radius: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
+.experience-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
 }
 
-.timeline-content {
-    background: var(--bg-secondary);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: var(--shadow-sm);
-    width: calc(50% - 2rem);
-    position: relative;
-}
-
-.timeline-item:nth-child(odd) .timeline-content {
-    left: 0;
-}
-
-.timeline-item:nth-child(even) .timeline-content {
-    left: calc(50% + 2rem);
-}
-
-.timeline-content h3 {
+.experience-card h3 {
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
 
-.timeline-content h4 {
+.experience-card h4 {
     font-size: 1rem;
     color: var(--accent-primary);
     margin-bottom: 0.5rem;
 }
 
-.timeline-date {
+.experience-date {
     display: block;
     font-size: 0.875rem;
     color: var(--text-muted);
@@ -368,25 +335,25 @@ body {
     font-weight: 500;
 }
 
-.timeline-content p {
+.experience-card p {
     color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 1rem;
 }
 
-.timeline-content ul {
+.experience-card ul {
     list-style: none;
     padding-left: 0;
 }
 
-.timeline-content li {
+.experience-card li {
     color: var(--text-secondary);
     margin-bottom: 0.5rem;
     position: relative;
     padding-left: 1.5rem;
 }
 
-.timeline-content li::before {
+.experience-card li::before {
     content: '▶';
     position: absolute;
     left: 0;
@@ -420,39 +387,17 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .nav-menu {
-        display: none;
-    }
-    
     .hero-actions {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .btn {
-        width: 100%;
-        max-width: 300px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
     }
     
     .work-grid {
         grid-template-columns: 1fr;
     }
     
-    .timeline::before {
-        left: 2rem;
-    }
-    
-    .timeline-marker {
-        left: 2rem;
-    }
-    
-    .timeline-content {
-        width: calc(100% - 6rem);
-        left: 4rem !important;
-    }
-    
-    .timeline-content::before {
-        left: -1rem;
+    .experience-grid {
+        grid-template-columns: 1fr;
     }
     
     .section-title {
@@ -473,7 +418,7 @@ body {
     }
     
     .hero-content {
-        padding: 80px 0;
+        padding: 40px 0;
     }
     
     .hero-title {
@@ -481,11 +426,12 @@ body {
     }
     
     .hero-subtitle {
-        font-size: 1.2rem;
+        font-size: 0.9rem;
     }
     
-    .hero-description {
-        font-size: 1rem;
+    .hero-actions {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
     }
     
     .work-grid {
@@ -497,18 +443,13 @@ body {
         margin: 0 10px;
     }
     
-    .timeline-content {
-        width: calc(100% - 4rem);
-        left: 3rem !important;
+    .experience-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .experience-card {
         padding: 1.5rem;
-    }
-    
-    .timeline-marker {
-        left: 1.5rem;
-    }
-    
-    .timeline::before {
-        left: 1.5rem;
     }
 }
 
