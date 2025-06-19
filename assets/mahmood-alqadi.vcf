@@ -2,13 +2,8 @@ BEGIN:VCARD
 VERSION:3.0
 FN:Mahmood AlQadi
 N:AlQadi;Mahmood;;;
-ORG:Economic Research Institute
-TITLE:Senior Data Scientist
-EMAIL;TYPE=WORK:mahmood.alqadi@email.com
-URL;TYPE=WORK:https://mahmoodqadi.github.io
-URL;TYPE=WORK:https://linkedin.com/in/mahmoodqadi
-URL;TYPE=WORK:https://github.com/mahmoodqadi
-URL;TYPE=WORK:https://blog.mahmoodqadi.com
-NOTE:Economics and Data Science Professional specializing in economic modeling, statistical analysis, and predictive analytics. Expert in Python, R, machine learning, and econometric modeling.
-CATEGORIES:Economics,Data Science,Analytics,Research
+EMAIL;type=INTERNET;type=HOME;type=pref:maq.alqadi@gmail.com
+TEL;type=HOME;type=pref:+971 (0) 50 331 8501
+URL;type=pref:https://malqadi.com
+TITLE:Data Scientist
 END:VCARD
