@@ -288,9 +288,11 @@ body {
 }
 
 .experience-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .experience-card {
@@ -396,10 +398,6 @@ body {
         grid-template-columns: 1fr;
     }
     
-    .experience-grid {
-        grid-template-columns: 1fr;
-    }
-    
     .section-title {
         font-size: 2rem;
     }
@@ -441,11 +439,6 @@ body {
     
     .work-card {
         margin: 0 10px;
-    }
-    
-    .experience-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
     }
     
     .experience-card {
