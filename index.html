@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <!-- Meta Tags for SEO and Social Media -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mahmood AlQadi - Finance and Data Professional Portfolio">
+    <meta name="author" content="Mahmood AlQadi">
+
+    <!-- Open Graph tags for social media sharing -->
+    <meta property="og:title" content="Mahmood AlQadi - Finance & Data Professional">
+    <meta property="og:description" content="Portfolio showcasing finance and data expertise">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://malqadi.com">
+
+    <!-- Page Title -->
+    <title>AlQadi</title>
+
+    <!-- Diamond Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90' font-family='system-ui, sans-serif' font-weight='bold' fill='%232563eb'>♦</text></svg>">
+
+    <!-- Tailwind CSS Framework from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind CSS Configuration for Dark Mode and Custom Fonts -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Enable class-based dark mode
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'serif': ['Georgia', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS for Smooth Transitions -->
+    <style>
+        /* Global smooth transitions for dark mode and hover effects */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans leading-relaxed">
+
+    <!-- === DARK MODE TOGGLE BUTTON === -->
+    <!-- Fixed position button in top-right corner for theme switching -->
+    <button
+        id="theme-toggle"
+        class="fixed top-6 right-6 z-50 p-3 rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200"
+        aria-label="Toggle dark mode"
+    >
+        <!-- Sun icon - shown in light mode -->
+        <svg id="sun-icon" class="w-5 h-5 text-yellow-500 dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+        </svg>
+
+        <!-- Moon icon - shown in dark mode -->
+        <svg id="moon-icon" class="w-5 h-5 text-blue-300 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+        </svg>
+    </button>
+
+    <!-- === SCROLL TO TOP BUTTON === -->
+    <!-- Fixed position button in bottom-right corner, appears when scrolled down -->
+    <button
+        id="scroll-to-top"
+        class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-blue-600 dark:bg-blue-500 text-white shadow-lg hover:bg-blue-700 dark:hover:bg-blue-400 transition-all duration-300 transform translate-y-16 opacity-0"
+        aria-label="Scroll to top"
+    >
+        <!-- Up arrow icon -->
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <!-- === MAIN CONTENT CONTAINER === -->
+    <main class="min-h-screen">
+
+        <!-- === HERO SECTION === -->
+        <!-- Full-screen introduction with name, tagline, and download buttons -->
+        <section id="hero" class="min-h-screen flex items-center justify-center px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto text-center">
+
+                <!-- Main name heading -->
+                <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-gray-100 mb-6 font-serif">
+                    Mahmood AlQadi
+                </h1>
+
+                <!-- Professional tagline -->
+                <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 font-light">
+                    Finance • Data Science • Economics
+                </p>
+
+                <!-- Brief professional description -->
+                <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
+                    Consultant at EY Parthenon specializing in financial diligence, M&A analysis, and data-driven insights
+                </p>
+
+                <!-- Download buttons container -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+
+                    <!-- CV/Resume download button -->
+                    <a
+                        href="downloads/CV_Mahmood AlQadi_2025.pdf"
+                        download="Mahmood_AlQadi_CV_2025.pdf"
+                        class="inline-flex items-center px-6 py-3 bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:opacity-90 transition-all duration-200 hover:transform hover:-translate-y-1 shadow-lg"
+                    >
+                        <!-- Document download icon -->
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        CV / Resume
+                    </a>
+
+                    <!-- Contact card download button -->
+                    <a
+                        href="downloads/contact.vcf"
+                        download="Mahmood_AlQadi_Contact.vcf"
+                        class="inline-flex items-center px-6 py-3 bg-gray-600 dark:bg-gray-500 text-white rounded-lg hover:opacity-90 transition-all duration-200 hover:transform hover:-translate-y-1 shadow-lg"
+                    >
+                        <!-- Phone icon -->
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                        </svg>
+                        Contact Card
+                    </a>
+                </div>
+
+                <!-- Animated scroll indicator -->
+                <div class="animate-bounce">
+                    <svg class="w-6 h-6 mx-auto text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- === SELECTED WORK SECTION === -->
+        <!-- Showcase of selected work projects with descriptions and tech stacks -->
+        <section id="projects" class="py-20 px-6 lg:px-8 bg-gray-100 dark:bg-gray-800">
+            <div class="max-w-6xl mx-auto">
+
+                <!-- Section title -->
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900 dark:text-gray-100 font-serif">
+                    Selected Work
+                </h2>
+
+                <!-- Projects grid - responsive layout -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Project Card 1: Economic Data Analysis Platform -->
+                    <div class="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700 hover:transform hover:-translate-y-1 transition-all duration-200">
+                        <!-- Project title -->
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">
+                            Economic Data Analysis Platform
+                        </h3>
+
+                        <!-- Project description -->
+                        <p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                            Interactive dashboard for analyzing macroeconomic indicators and trends using Python, Pandas, and Plotly. Features real-time data visualization and statistical modeling.
+                        </p>
+
+                        <!-- Technology tags -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">Python</span>
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">Pandas</span>
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">Plotly</span>
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">Dash</span>
+                        </div>
+
+                        <!-- Project link -->
+                        <a href="https://github.com/mahmoodqadi/economic-analysis" target="_blank" class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            View Project
+                        </a>
+                    </div>
+
+                    <!-- Project Card 2: Financial Forecasting Model -->
+                    <div class="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700 hover:transform hover:-translate-y-1 transition-all duration-200">
+                        <!-- Project title -->
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">
+                            Financial Forecasting Model
+                        </h3>
+
+                        <!-- Project description -->
+                        <p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                            Machine learning model for predicting stock market trends and financial indicators. Implements LSTM neural networks and time series analysis for accurate forecasting.
+                        </p>
+
+                        <!-- Technology tags -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">TensorFlow</span>
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">Scikit-learn</span>
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">NumPy</span>
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">LSTM</span>
+                        </div>
+
+                        <!-- Project link -->
+                        <a href="https://github.com/mahmoodqadi/financial-forecasting" target="_blank" class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            View Project
+                        </a>
+                    </div>
+
+                    <!-- Project Card 3: Market Research Analytics -->
+                    <div class="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700 hover:transform hover:-translate-y-1 transition-all duration-200">
+                        <!-- Project title -->
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">
+                            Market Research Analytics
+                        </h3>
+
+                        <!-- Project description -->
+                        <p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                            Comprehensive market analysis tool using advanced statistical methods and data visualization. Provides insights into consumer behavior and market trends for strategic decision-making.
+                        </p>
+
+                        <!-- Technology tags -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">R</span>
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">Shiny</span>
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">ggplot2</span>
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">Statistics</span>
+                        </div>
+
+                        <!-- Project link -->
+                        <a href="https://github.com/mahmoodqadi/market-research" target="_blank" class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            View Project
+                        </a>
+                    </div>
+
+                    <!-- Project Card 4: Economic Impact Assessment -->
+                    <div class="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700 hover:transform hover:-translate-y-1 transition-all duration-200">
+                        <!-- Project title -->
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">
+                            Economic Impact Assessment
+                        </h3>
+
+                        <!-- Project description -->
+                        <p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                            Quantitative analysis framework for measuring economic impact of policy changes. Utilizes econometric modeling and regression analysis to assess causal relationships.
+                        </p>
+
+                        <!-- Technology tags -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">Python</span>
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">Statsmodels</span>
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">Econometrics</span>
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">Jupyter</span>
+                        </div>
+
+                        <!-- Project link -->
+                        <a href="https://github.com/mahmoodqadi/economic-impact" target="_blank" class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            View Project
+                        </a>
+                    </div>
+
+                    <!-- Project Card 5: Supply Chain Optimization -->
+                    <div class="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700 hover:transform hover:-translate-y-1 transition-all duration-200">
+                        <!-- Project title -->
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">
+                            Supply Chain Optimization
+                        </h3>
+
+                        <!-- Project description -->
+                        <p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                            Advanced optimization algorithms for supply chain efficiency using operations research methods. Features real-time tracking and predictive maintenance scheduling.
+                        </p>
+
+                        <!-- Technology tags -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">Python</span>
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">Optimization</span>
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">OR-Tools</span>
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">Flask</span>
+                        </div>
+
+                        <!-- Project link -->
+                        <a href="https://github.com/mahmoodqadi/supply-chain" target="_blank" class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            View Project
+                        </a>
+                    </div>
+
+                    <!-- Project Card 6: Consumer Sentiment Analysis -->
+                    <div class="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700 hover:transform hover:-translate-y-1 transition-all duration-200">
+                        <!-- Project title -->
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">
+                            Consumer Sentiment Analysis
+                        </h3>
+
+                        <!-- Project description -->
+                        <p class="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                            Natural language processing system for analyzing consumer sentiment from social media and survey data. Implements transformer models for accurate sentiment classification.
+                        </p>
+
+                        <!-- Technology tags -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">NLP</span>
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">Transformers</span>
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">PyTorch</span>
+                            <span class="px-3 py-1 bg-blue-600 dark:bg-blue-500 text-white text-sm rounded-full">Streamlit</span>
+                        </div>
+
+                        <!-- Project link -->
+                        <a href="https://github.com/mahmoodqadi/sentiment-analysis" target="_blank" class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            View Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === WORK EXPERIENCE SECTION === -->
+        <!-- Professional work history with roles, companies, and achievements -->
+        <section id="experience" class="py-20 px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+
+                <!-- Section title -->
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900 dark:text-gray-100 font-serif">
+                    Experience
+                </h2>
+
+                <!-- Experience timeline container -->
+                <div class="space-y-12">
+
+                    <!-- Experience Item 1: EY Parthenon (Current Role) -->
+                    <div class="bg-gray-100 dark:bg-gray-800 rounded-lg p-8 shadow-lg border border-gray-200 dark:border-gray-700">
+                        <!-- Job header with title, company, and dates -->
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                            <div>
+                                <!-- Job title with Current badge -->
+                                <div class="flex flex-col md:flex-row md:items-center md:gap-3 mb-1">
+                                    <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+                                        Consultant - Financial Diligence
+                                    </h3>
+                                    <span class="inline-flex items-center px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm font-medium rounded-full mt-1 md:mt-0">
+                                        Current
+                                    </span>
+                                </div>
+                                <!-- Company name -->
+                                <p class="text-xl text-blue-600 dark:text-blue-400 font-medium">
+                                    EY Parthenon
+                                </p>
+                            </div>
+                            <!-- Employment period -->
+                            <span class="text-gray-600 dark:text-gray-400 mt-2 md:mt-0">
+                                Jul 2025 - Present
+                            </span>
+                        </div>
+
+                        <!-- Job responsibilities and achievements -->
+                        <div class="text-gray-600 dark:text-gray-400 space-y-2">
+                            <p>• Performed in-depth financial and operational analyses, evaluating commercial priorities, regulatory risks, and synergy opportunities to drive M&A value</p>
+                            <p>• Supported complex carve-out transactions and IPO readiness, ensuring smooth execution and alignment with strategic objectives</p>
+                            <p>• Prepared and reviewed detailed financial statements and due diligence reports for vendor and buy-side stakeholders</p>
+                        </div>
+                    </div>
+
+                    <!-- Experience Item 2: Barclays -->
+                    <div class="bg-gray-100 dark:bg-gray-800 rounded-lg p-8 shadow-lg border border-gray-200 dark:border-gray-700">
+                        <!-- Job header with title, company, and dates -->
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                            <div>
+                                <!-- Job title -->
+                                <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-1">
+                                    FIG Analyst
+                                </h3>
+                                <!-- Company name -->
+                                <p class="text-xl text-blue-600 dark:text-blue-400 font-medium">
+                                    Barclays
+                                </p>
+                            </div>
+                            <!-- Employment period -->
+                            <span class="text-gray-600 dark:text-gray-400 mt-2 md:mt-0">
+                                Nov 2023 - Jun 2025
+                            </span>
+                        </div>
+
+                        <!-- Job responsibilities and achievements -->
+                        <div class="text-gray-600 dark:text-gray-400 space-y-2">
+                            <p>• Collaborated with senior relationship managers to strengthen client relationships with financial institutions, driving engagement and account growth</p>
+                            <p>• Evaluated financial statements of client institutions to assess creditworthiness using comprehensive financial analysis</p>
+                            <p>• Created and maintained compliance documentation in line with internal audit requirements, ensuring regulatory compliance</p>
+                        </div>
+                    </div>
+
+                    <!-- Experience Item 3: Miral LLC -->
+                    <div class="bg-gray-100 dark:bg-gray-800 rounded-lg p-8 shadow-lg border border-gray-200 dark:border-gray-700">
+                        <!-- Job header with title, company, and dates -->
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                            <div>
+                                <!-- Job title -->
+                                <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-1">
+                                    Data Analytics and Governance
+                                </h3>
+                                <!-- Company name -->
+                                <p class="text-xl text-blue-600 dark:text-blue-400 font-medium">
+                                    Miral LLC
+                                </p>
+                            </div>
+                            <!-- Employment period -->
+                            <span class="text-gray-600 dark:text-gray-400 mt-2 md:mt-0">
+                                May 2023 - Oct 2023
+                            </span>
+                        </div>
+
+                        <!-- Job responsibilities and achievements -->
+                        <div class="text-gray-600 dark:text-gray-400 space-y-2">
+                            <p>• Assisted data owners across business units by defining governance requirements, contributing to a 20% improvement in data management adherence</p>
+                            <p>• Researched and structured large datasets to drive actionable insights, optimizing operations and enhancing guest experiences</p>
+                            <p>• Analyzed data trends and developed models to identify profitable patterns, presenting findings with Tableau dashboards</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === SKILLS & QUALIFICATIONS SECTION === -->
+        <!-- Education, certifications, and technical skills -->
+        <section id="skills" class="py-20 px-6 lg:px-8 bg-gray-100 dark:bg-gray-800">
+            <div class="max-w-4xl mx-auto">
+
+                <!-- Section title -->
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900 dark:text-gray-100 font-serif">
+                    Skills & Qualifications
+                </h2>
+
+                <!-- === QUALIFICATIONS SUBSECTION === -->
+                <!-- Education and certifications -->
+                <div class="space-y-8 mb-16">
+
+                    <!-- CFA Certification (In Progress) -->
+                    <div class="bg-white dark:bg-gray-900 rounded-lg p-8 shadow-lg border border-gray-200 dark:border-gray-700">
+                        <!-- Certification header -->
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                            <div>
+                                <!-- Certification title -->
+                                <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                                    Chartered Financial Analyst - Level 1
+                                </h3>
+                                <!-- Issuing organization -->
+                                <p class="text-xl text-blue-600 dark:text-blue-400 font-medium">
+                                    CFA Institute
+                                </p>
+                            </div>
+                            <!-- Expected completion date -->
+                            <span class="text-gray-600 dark:text-gray-400 mt-2 md:mt-0">
+                                Expected 2026
+                            </span>
+                        </div>
+
+                        <!-- Status indicator -->
+                        <div class="inline-flex items-center text-blue-600 dark:text-blue-400">
+                            <span class="w-2 h-2 bg-yellow-500 rounded-full mr-2"></span>
+                            In Progress
+                        </div>
+                    </div>
+
+                    <!-- University Education -->
+                    <div class="bg-white dark:bg-gray-900 rounded-lg p-8 shadow-lg border border-gray-200 dark:border-gray-700">
+                        <!-- Degree header -->
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                            <div>
+                                <!-- Degree title with minor as subtitle on same line -->
+                                <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                                    Bachelor of Arts in Economics
+                                    <span class="text-lg font-normal text-gray-600 dark:text-gray-400"> • Minor in Data Science & Math</span>
+                                </h3>
+                                <!-- University name -->
+                                <p class="text-xl text-blue-600 dark:text-blue-400 font-medium">
+                                    New York University Abu Dhabi
+                                </p>
+                            </div>
+                            <!-- Graduation year -->
+                            <span class="text-gray-600 dark:text-gray-400 mt-2 md:mt-0">
+                                2022
+                            </span>
+                        </div>
+
+                        <!-- Scholarship information -->
+                        <div class="mb-4">
+                            <p class="text-gray-600 dark:text-gray-400">
+                                • Recipient of HH Sheikh Mohammed Bin Zayed Full Scholarship
+                            </p>
+                        </div>
+
+                        <!-- Coursework section -->
+                        <div>
+                            <!-- Coursework subtitle -->
+                            <h4 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-3">
+                                Key Coursework
+                            </h4>
+                            <!-- Coursework tags/bubbles -->
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-sm rounded-full">Econometrics</span>
+                                <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-sm rounded-full">Imperfect Markets</span>
+                                <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-sm rounded-full">Fintech (Machine Learning)</span>
+                                <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-sm rounded-full">Economic Growth</span>
+                                <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-sm rounded-full">Economic Policy</span>
+                                <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-sm rounded-full">Global Asset Allocation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- === TECHNICAL SKILLS SUBSECTION === -->
+                <!-- Programming languages and software tools -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                    <!-- Programming Skills -->
+                    <div class="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                        <!-- Skills category title -->
+                        <h4 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                            Programming
+                        </h4>
+                        <!-- Programming language tags -->
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full">Python</span>
+                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full">SQL</span>
+                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full">R</span>
+                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full">JavaScript</span>
+                        </div>
+                    </div>
+
+                    <!-- Software Skills -->
+                    <div class="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                        <!-- Skills category title -->
+                        <h4 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                            Software
+                        </h4>
+                        <!-- Software tool tags -->
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm rounded-full">Excel</span>
+                            <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm rounded-full">Tableau</span>
+                            <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm rounded-full">Power BI</span>
+                            <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm rounded-full">Azure</span>
+                            <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm rounded-full">Alteryx</span>
+                            <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm rounded-full">Snowflake</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === CONTACT SECTION === -->
+        <!-- Contact information and download links -->
+        <section id="contact" class="py-20 px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto text-center">
+
+                <!-- Section title -->
+                <h2 class="text-4xl md:text-5xl font-bold mb-16 text-gray-900 dark:text-gray-100 font-serif">
+                    Get In Touch
+                </h2>
+
+                <!-- Contact methods grid - 5 columns for all contact options -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
+
+                    <!-- Email Contact -->
+                    <a
+                        href="mailto:mail@malqadi.com"
+                        class="bg-gray-100 dark:bg-gray-800 rounded-lg p-6 hover:transform hover:-translate-y-1 transition-all duration-200 group shadow-lg border border-gray-200 dark:border-gray-700"
+                    >
+                        <!-- Email icon -->
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-8 h-8 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <!-- Contact method label and info -->
+                        <h3 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Email</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">Message Me</p>
+                    </a>
+
+                    <!-- LinkedIn Contact -->
+                    <a
+                        href="https://linkedin.com/in/malqadi"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="bg-gray-100 dark:bg-gray-800 rounded-lg p-6 hover:transform hover:-translate-y-1 transition-all duration-200 group shadow-lg border border-gray-200 dark:border-gray-700"
+                    >
+                        <!-- LinkedIn icon -->
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-8 h-8 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </div>
+                        <!-- Contact method label and info -->
+                        <h3 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">LinkedIn</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">Connect with Me</p>
+                    </a>
+
+                    <!-- Resume Download -->
+                    <a
+                        href="downloads/CV_Mahmood AlQadi_2025.pdf"
+                        download="Mahmood_AlQadi_CV_2025.pdf"
+                        class="bg-gray-100 dark:bg-gray-800 rounded-lg p-6 hover:transform hover:-translate-y-1 transition-all duration-200 group shadow-lg border border-gray-200 dark:border-gray-700"
+                    >
+                        <!-- Document download icon -->
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-8 h-8 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                        </div>
+                        <!-- Download option label and info -->
+                        <h3 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Resume</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">Download PDF</p>
+                    </a>
+
+                    <!-- Contact Card Download -->
+                    <a
+                        href="downloads/contact.vcf"
+                        download="Mahmood_AlQadi_Contact.vcf"
+                        class="bg-gray-100 dark:bg-gray-800 rounded-lg p-6 hover:transform hover:-translate-y-1 transition-all duration-200 group shadow-lg border border-gray-200 dark:border-gray-700"
+                    >
+                        <!-- Phone icon for contact card -->
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-8 h-8 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                        </div>
+                        <!-- Download option label and info -->
+                        <h3 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">Contact Card</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">vCard</p>
+                    </a>
+
+                    <!-- GitHub Contact -->
+                    <a
+                        href="https://github.com/maqmood"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="bg-gray-100 dark:bg-gray-800 rounded-lg p-6 hover:transform hover:-translate-y-1 transition-all duration-200 group shadow-lg border border-gray-200 dark:border-gray-700"
+                    >
+                        <!-- GitHub icon -->
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-8 h-8 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </div>
+                        <!-- Contact method label and info -->
+                        <h3 class="font-semibold text-gray-900 dark:text-gray-100 mb-2">GitHub</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">View my code</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- === FOOTER === -->
+    <!-- Site footer with copyright, credits, and back-to-top link -->
+    <footer class="py-12 px-6 lg:px-8 bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+        <div class="max-w-4xl mx-auto text-center">
+
+            <!-- Copyright notice -->
+            <p class="text-gray-600 dark:text-gray-400">
+                © 2025 Mahmood AlQadi. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- === JAVASCRIPT FOR INTERACTIVITY === -->
+    <!-- Simple dark mode toggle functionality -->
+    <script>
+        // Wait for DOM to be fully loaded before executing
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // === DARK MODE TOGGLE FUNCTIONALITY ===
+            // Get the theme toggle button element
+            const themeToggle = document.getElementById('theme-toggle');
+
+            // Only proceed if the button exists
+            if (themeToggle) {
+
+                // Add click event listener to the toggle button
+                themeToggle.addEventListener('click', function() {
+
+                    // Get the root HTML element
+                    const html = document.documentElement;
+
+                    // Toggle the 'dark' class and get the new state
+                    const isDark = html.classList.toggle('dark');
+
+                    // Get the icon elements
+                    const sunIcon = document.getElementById('sun-icon');
+                    const moonIcon = document.getElementById('moon-icon');
+
+                    // Only proceed if both icons exist
+                    if (sunIcon && moonIcon) {
+
+                        // Update icon visibility based on current theme
+                        if (isDark) {
+                            // Dark mode: hide sun, show moon
+                            sunIcon.classList.add('hidden');
+                            moonIcon.classList.remove('hidden');
+                        } else {
+                            // Light mode: show sun, hide moon
+                            sunIcon.classList.remove('hidden');
+                            moonIcon.classList.add('hidden');
+                        }
+                    }
+                });
+            }
+
+            // === SCROLL TO TOP BUTTON FUNCTIONALITY ===
+            // Get the scroll to top button element
+            const scrollToTopBtn = document.getElementById('scroll-to-top');
+
+            // Only proceed if the button exists
+            if (scrollToTopBtn) {
+
+                // Function to show/hide scroll to top button based on scroll position
+                function toggleScrollButton() {
+                    // Show button if scrolled more than 300px from top
+                    if (window.scrollY > 300) {
+                        scrollToTopBtn.classList.remove('translate-y-16', 'opacity-0');
+                        scrollToTopBtn.classList.add('translate-y-0', 'opacity-100');
+                    } else {
+                        scrollToTopBtn.classList.add('translate-y-16', 'opacity-0');
+                        scrollToTopBtn.classList.remove('translate-y-0', 'opacity-100');
+                    }
+                }
+
+                // Add scroll event listener to window
+                window.addEventListener('scroll', toggleScrollButton);
+
+                // Add click event listener to scroll to top button
+                scrollToTopBtn.addEventListener('click', function() {
+                    // Smooth scroll to top of page
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+
+                // Initial check for button visibility
+                toggleScrollButton();
+            }
+        });
+    </script>
+
+</body>
+</html>
