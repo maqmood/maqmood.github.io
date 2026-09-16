@@ -19,7 +19,8 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90' font-family='system-ui, sans-serif' font-weight='bold' fill='%232563eb'>♦</text></svg>">
 
     <style>
-        /* Theme tokens. Dark values are swapped in from the visitor's system setting. */
+        /* Theme tokens. Dark values follow the visitor's system setting unless they
+           pick a theme with the toggle, which sets data-theme on <html>. */
         :root {
             --bg: #ffffff;
             --text: #1a1a1a;
@@ -28,14 +29,23 @@
             --border: #949494;
         }
 
+        /* :not([data-theme="light"]) lets an explicit light choice win over the system. */
         @media (prefers-color-scheme: dark) {
-            :root {
+            :root:not([data-theme="light"]) {
                 --bg: #121212;
                 --text: #ececec;
                 --muted: #a0a0a0;
                 --rule: #2c2c2c;
                 --border: #636363;
             }
+        }
+
+        :root[data-theme="dark"] {
+            --bg: #121212;
+            --text: #ececec;
+            --muted: #a0a0a0;
+            --rule: #2c2c2c;
+            --border: #636363;
         }
 
         *, *::before, *::after { box-sizing: border-box; }
@@ -58,12 +68,58 @@
         }
 
         /* === Header === */
+        /* The name and the theme toggle share a row; the toggle sits at the far right. */
+        .name-line {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin: 0 0 0.35rem;
+        }
+
         h1 {
             font-size: 1.5rem;
             font-weight: 600;
             letter-spacing: -0.01em;
-            margin: 0 0 0.35rem;
+            margin: 0;
         }
+
+        .theme-toggle {
+            flex: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            padding: 0;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: none;
+            color: var(--muted);
+            cursor: pointer;
+            line-height: 0;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--text);
+            color: var(--text);
+        }
+
+        .theme-toggle:focus-visible {
+            outline: 2px solid var(--text);
+            outline-offset: 2px;
+        }
+
+        .theme-toggle svg {
+            width: 1rem;
+            height: 1rem;
+            display: block;
+        }
+
+        /* Show the icon for the theme the button switches *to*. */
+        .theme-toggle .icon-moon { display: none; }
+        :root[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+        :root[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
 
         .role { margin: 0 0 0.15rem; }
         .tagline { margin: 0; color: var(--muted); }
@@ -187,6 +243,36 @@
             font-size: 0.8125rem;
         }
 
+        /* === Entrance animation ===
+           Each block starts slightly low and transparent, then settles on load.
+           --i sets its place in the queue, so the page resolves top to bottom. */
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            /* Fast out, long gentle settle - the curve is what keeps it from feeling cheap. */
+            animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: calc(var(--i, 0) * 70ms);
+        }
+
+        /* Motion can be genuinely unpleasant for vestibular disorders, so honour the
+           system setting: everything lands immediately, at full opacity. */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                animation: none;
+            }
+        }
+
         /* === Small screens: stack every row, full-width buttons === */
         @media (max-width: 600px) {
             .wrap { padding: 2.5rem 1.25rem 2.5rem; }
@@ -196,13 +282,36 @@
             .btn { width: 100%; text-align: center; }
         }
     </style>
+
+    <!-- Runs before first paint so a saved theme never flashes the wrong colors. -->
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('theme');
+                if (saved === 'light' || saved === 'dark') {
+                    document.documentElement.setAttribute('data-theme', saved);
+                }
+            } catch (e) { /* private mode or blocked storage: fall back to the system theme */ }
+        })();
+    </script>
 </head>
 
 <body>
     <div class="wrap">
 
-        <header>
-            <h1>Mahmood AlQadi</h1>
+        <header class="reveal" style="--i: 0">
+            <div class="name-line">
+                <h1>Mahmood AlQadi</h1>
+                <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+                    </svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
+                    </svg>
+                </button>
+            </div>
             <p class="role">Transaction Diligence Consultant at EY-Parthenon</p>
             <p class="tagline">Finance · Data Science · Economics</p>
 
@@ -215,103 +324,13 @@
         <main>
 
             <!-- === ABOUT === -->
-            <section id="about">
+            <section id="about" class="reveal" style="--i: 1">
                 <h2>About</h2>
                 <p class="about">I'm a transaction diligence consultant at EY-Parthenon in the UAE, working on buy-side and vendor due diligence and IPO readiness across manufacturing, F&amp;B, TMT, and financial services. Before that, I was a FIG analyst at Barclays, assessing the creditworthiness of financial institutions, and worked in data analytics and governance at Miral. I studied economics, with a minor in data science and math, at NYU Abu Dhabi.</p>
             </section>
 
-            <!-- === EXPERIENCE === -->
-            <section id="experience">
-                <h2>Experience</h2>
-
-                <div class="row">
-                    <div class="when">Jul 2025 – Present</div>
-                    <div class="what">
-                        <h3>Consultant - Transaction Diligence</h3>
-                        <p class="org">EY-Parthenon · United Arab Emirates</p>
-                        <ul>
-                            <li>Delivered buy-side and vendor due diligence across manufacturing, F&amp;B, TMT, and financial services, preparing VDD reports and databooks with defensible normalized earnings, net debt, and working capital positions, and coordinating data room Q&amp;A with buyers and lenders.</li>
-                            <li>Identified quality of earnings adjustments (related-party, non-recurring, and out-of-period items) and built price-volume-mix and EBITDA bridges by product and customer to show whether growth was price- or volume-led, challenging management's business plan assumptions.</li>
-                            <li>Quantified debt-like items such as end-of-service benefits and used seasonality and DSO/DIO/DPO trends to propose normalized working capital pegs for completion accounts, flagging pre-signing receivables and payables distortions that informed price adjustments and SPA protections.</li>
-                            <li>Supported IPO and investor relations readiness for companies preparing to list on ADX, DFM, and Saudi Exchange (Tadawul), assessing gaps in financial reporting, internal controls, and governance and helping define the KPIs underpinning the equity story.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="when">Nov 2023 – Jun 2025</div>
-                    <div class="what">
-                        <h3>FIG Analyst</h3>
-                        <p class="org">Barclays · DIFC Dubai, United Arab Emirates</p>
-                        <ul>
-                            <li>Support: Collaborated with senior relationship managers to strengthen client relationships with financial institutions, including banks, insurance companies, and asset managers, driving engagement and account growth.</li>
-                            <li>Analysis: Evaluated financial statements of client institutions to assess creditworthiness, using balance sheet, income statement, and cash flow analysis to support decision-making in client risk assessment.</li>
-                            <li>Documentation: Created and maintained compliance documentation in line with internal audit requirements, ensuring accuracy and easy access for audit and regulatory reviews.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="when">May 2023 – Oct 2023</div>
-                    <div class="what">
-                        <h3>Data Analytics and Governance</h3>
-                        <p class="org">Miral LLC · Yas Island Abu Dhabi, United Arab Emirates</p>
-                        <ul>
-                            <li>Governance: Assisted data owners across business units by defining governance requirements, tracking progress, and preparing KPI reports, contributing to a 20% improvement in data management adherence.</li>
-                            <li>Data Science: Researched and structured large datasets to drive actionable insights, optimizing operations and enhancing guest experiences through data-driven recommendations.</li>
-                            <li>Analytics: Analyzed data trends and developed models to identify profitable patterns, presenting findings with Tableau dashboards to facilitate executive decision-making.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- === QUALIFICATIONS === -->
-            <section id="qualifications">
-                <h2>Qualifications</h2>
-
-                <div class="row">
-                    <div class="when">Present</div>
-                    <div class="what">
-                        <h3>Level I Candidate in the CFA Program</h3>
-                        <p class="org">CFA Institute</p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="when">2022</div>
-                    <div class="what">
-                        <h3>BA in Economics, Minor in Data Science &amp; Math</h3>
-                        <p class="org">New York University Abu Dhabi</p>
-                        <ul>
-                            <li>Recipient of HH Sheikh Mohammed Bin Zayed Full Scholarship</li>
-                            <li>Key Coursework: Econometrics, Imperfect Markets, Fintech (Machine Learning), Economic Growth, Economic Policy, Global Asset Allocation</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- === SKILLS === -->
-            <section id="skills">
-                <h2>Skills</h2>
-
-                <div class="row">
-                    <div class="when">Programming</div>
-                    <div class="what">Python, SQL, R, JavaScript</div>
-                </div>
-
-                <div class="row">
-                    <div class="when">Software</div>
-                    <div class="what">Excel, PowerPoint, AI Tools, Tableau, Power BI, Azure, Alteryx, Snowflake</div>
-                </div>
-
-                <div class="row">
-                    <div class="when">Languages</div>
-                    <div class="what">English, Arabic</div>
-                </div>
-            </section>
-
             <!-- === SELECTED WORK === -->
-            <section id="projects">
+            <section id="projects" class="reveal" style="--i: 2">
                 <h2>Selected Work</h2>
 
                 <div class="work-item">
@@ -361,8 +380,98 @@
                 -->
             </section>
 
+            <!-- === EXPERIENCE === -->
+            <section id="experience" class="reveal" style="--i: 3">
+                <h2>Experience</h2>
+
+                <div class="row">
+                    <div class="when">Jul 2025 – Present</div>
+                    <div class="what">
+                        <h3>Consultant - Transaction Diligence</h3>
+                        <p class="org">EY-Parthenon · United Arab Emirates</p>
+                        <ul>
+                            <li>Delivered buy-side and vendor due diligence across manufacturing, F&amp;B, TMT, and financial services, preparing VDD reports and databooks with defensible normalized earnings, net debt, and working capital positions, and coordinating data room Q&amp;A with buyers and lenders.</li>
+                            <li>Identified quality of earnings adjustments (related-party, non-recurring, and out-of-period items) and built price-volume-mix and EBITDA bridges by product and customer to show whether growth was price- or volume-led, challenging management's business plan assumptions.</li>
+                            <li>Quantified debt-like items such as end-of-service benefits and used seasonality and DSO/DIO/DPO trends to propose normalized working capital pegs for completion accounts, flagging pre-signing receivables and payables distortions that informed price adjustments and SPA protections.</li>
+                            <li>Supported IPO and investor relations readiness for companies preparing to list on ADX, DFM, and Saudi Exchange (Tadawul), assessing gaps in financial reporting, internal controls, and governance and helping define the KPIs underpinning the equity story.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="when">Nov 2023 – Jun 2025</div>
+                    <div class="what">
+                        <h3>FIG Analyst</h3>
+                        <p class="org">Barclays · DIFC Dubai, United Arab Emirates</p>
+                        <ul>
+                            <li>Support: Collaborated with senior relationship managers to strengthen client relationships with financial institutions, including banks, insurance companies, and asset managers, driving engagement and account growth.</li>
+                            <li>Analysis: Evaluated financial statements of client institutions to assess creditworthiness, using balance sheet, income statement, and cash flow analysis to support decision-making in client risk assessment.</li>
+                            <li>Documentation: Created and maintained compliance documentation in line with internal audit requirements, ensuring accuracy and easy access for audit and regulatory reviews.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="when">May 2023 – Oct 2023</div>
+                    <div class="what">
+                        <h3>Data Analytics and Governance</h3>
+                        <p class="org">Miral LLC · Yas Island Abu Dhabi, United Arab Emirates</p>
+                        <ul>
+                            <li>Governance: Assisted data owners across business units by defining governance requirements, tracking progress, and preparing KPI reports, contributing to a 20% improvement in data management adherence.</li>
+                            <li>Data Science: Researched and structured large datasets to drive actionable insights, optimizing operations and enhancing guest experiences through data-driven recommendations.</li>
+                            <li>Analytics: Analyzed data trends and developed models to identify profitable patterns, presenting findings with Tableau dashboards to facilitate executive decision-making.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- === QUALIFICATIONS === -->
+            <section id="qualifications" class="reveal" style="--i: 4">
+                <h2>Qualifications</h2>
+
+                <div class="row">
+                    <div class="when">Present</div>
+                    <div class="what">
+                        <h3>Level I Candidate in the CFA Program</h3>
+                        <p class="org">CFA Institute</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="when">2022</div>
+                    <div class="what">
+                        <h3>BA in Economics, Minor in Data Science &amp; Math</h3>
+                        <p class="org">New York University Abu Dhabi</p>
+                        <ul>
+                            <li>Recipient of HH Sheikh Mohammed Bin Zayed Full Scholarship</li>
+                            <li>Key Coursework: Econometrics, Imperfect Markets, Fintech (Machine Learning), Economic Growth, Economic Policy, Global Asset Allocation</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- === SKILLS === -->
+            <section id="skills" class="reveal" style="--i: 5">
+                <h2>Skills</h2>
+
+                <div class="row">
+                    <div class="when">Programming</div>
+                    <div class="what">Python, SQL, R, JavaScript</div>
+                </div>
+
+                <div class="row">
+                    <div class="when">Software</div>
+                    <div class="what">Excel, PowerPoint, AI Tools, Tableau, Power BI, Azure, Alteryx, Snowflake</div>
+                </div>
+
+                <div class="row">
+                    <div class="when">Languages</div>
+                    <div class="what">English, Arabic</div>
+                </div>
+            </section>
+
             <!-- === CONTACT === -->
-            <section id="contact">
+            <section id="contact" class="reveal" style="--i: 6">
                 <h2>Contact</h2>
 
                 <div class="row">
@@ -383,8 +492,47 @@
 
         </main>
 
-        <footer>© 2026 Mahmood AlQadi.</footer>
+        <footer class="reveal" style="--i: 7">© 2026 Mahmood AlQadi.</footer>
 
     </div>
+
+    <script>
+        (function () {
+            var root = document.documentElement;
+            var toggle = document.getElementById('theme-toggle');
+            var systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+            // What the visitor is actually looking at right now: an explicit
+            // data-theme choice if one is set, otherwise the system setting.
+            function currentTheme() {
+                return root.getAttribute('data-theme') || (systemDark.matches ? 'dark' : 'light');
+            }
+
+            // Keeps the button's accessible name describing what a click will do.
+            function syncLabel() {
+                toggle.setAttribute(
+                    'aria-label',
+                    currentTheme() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'
+                );
+            }
+
+            // Flip to the opposite theme, apply it, and remember the choice.
+            function setTheme() {
+                var next = currentTheme() === 'dark' ? 'light' : 'dark';
+                root.setAttribute('data-theme', next);
+                try {
+                    localStorage.setItem('theme', next);
+                } catch (e) { /* storage blocked: the choice just won't survive a reload */ }
+                syncLabel();
+            }
+
+            toggle.addEventListener('click', setTheme);
+
+            // Fires when the OS theme changes (e.g. a scheduled dark mode at sunset).
+            systemDark.addEventListener('change', syncLabel);
+
+            syncLabel();
+        })();
+    </script>
 </body>
 </html>
